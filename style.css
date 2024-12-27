@@ -1,0 +1,28 @@
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    background-color: orange;
+    align-items: center;
+    border-radius: 10px;
+}
+#logo{
+    height: 70px;
+    padding: 10px;
+}
+#logo img{
+    height: 70px;
+    border-radius: 50%;
+    cursor: pointer;
+    
+}
+#info ul{
+    display: flex;
+}
+#info ul li{
+    list-style-type: none;
+    padding: 10px;
+    font-size: 20px;
+    color: rgb(213, 1, 1);
+    cursor: pointer;
+}
