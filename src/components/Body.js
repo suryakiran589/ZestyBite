@@ -1,14 +1,30 @@
 import ResCard from "../components/ResCard"
-import resList from "../utils/resList"
+import { useState,useEffect } from "react"
+import reList from "../utils/resList"
+const Body= ()=>{
+    const [resList,setReslist] = useState(reList)
+    console.log(resList)
+    // async function fetchData(){
+        
+    //     const data = await fetch("https://www.swiggy.com/mapi/restaurants/list/v5?lat=16.9890648&lng=82.2474648&collection=83639&tags=layout_CCS_Biryani&sortBy=&filters=&type=rcv2&offset=0&carousel=true&third_party_vendor=1")
+        
+    //     const json = await data.json() 
 
-const Body= ()=>
+    //     setReslist(json?.data?.cards)
 
-    (<div className="ResContainer">
+    // }
+    // useEffect(() =>
+    // {
+    //     fetchData()
+    // } 
+    // ,[])
+    return (<div className="ResContainer">
            {resList.map((res,index) =>
-                <ResCard  id={index} r={{res}} />
+                <ResCard  key ={index} r={{res}} />
             )}
             
     </div>)
+    }
         
     
 

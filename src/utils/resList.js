@@ -1,4 +1,4 @@
-const resList = [
+const reList = [
     {
       type: "restaurant",
       data: {
@@ -1816,4 +1816,4 @@ const resList = [
     },
   ];
 
-  export default resList
+  export default reList

@@ -4,6 +4,7 @@
   "description": "first app",
   "main": "fun.js",
   "scripts": {
+    "start":"parcel index.html",
     "test": "jest"
   },
   "repository": {
