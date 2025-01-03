@@ -1,31 +1,35 @@
-import ResCard from "../components/ResCard"
-import { useState,useEffect } from "react"
-import reList from "../utils/resList"
-const Body= ()=>{
-    const [resList,setReslist] = useState(reList)
-    console.log(resList)
-    // async function fetchData(){
-        
-    //     const data = await fetch("https://www.swiggy.com/mapi/restaurants/list/v5?lat=16.9890648&lng=82.2474648&collection=83639&tags=layout_CCS_Biryani&sortBy=&filters=&type=rcv2&offset=0&carousel=true&third_party_vendor=1")
-        
-    //     const json = await data.json() 
+import ResCard from "../components/ResCard";
+import { useState, useEffect } from "react";
+import reList from "../utils/resList";
+const Body = () => {
+  const [resList, setReslist] = useState([]);
+  useEffect(() => {
+    fetchData();
+  }, []);
+  
+  async function fetchData() {
+    try{
+    const data = await fetch(
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9715987&lng=77.5945627&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+    );
 
-    //     setReslist(json?.data?.cards)
+    const results = await data.json();
+    console.log(results.data.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+    setReslist(results?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+}
+catch(error){
+    console.log(error,"res error")
+}
 
-    // }
-    // useEffect(() =>
-    // {
-    //     fetchData()
-    // } 
-    // ,[])
-    return (<div className="ResContainer">
-           {resList.map((res,index) =>
-                <ResCard  key ={index} r={{res}} />
-            )}
-            
-    </div>)
-    }
+  }
+  return (
+    <div className="ResContainer">
         
-    
+      {resList.map((res, index) => (
+        <ResCard key={index} r={{ res }} />
+      ))}
+    </div>
+  );
+};
 
-export default Body
+export default Body;

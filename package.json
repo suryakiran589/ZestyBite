@@ -2,10 +2,9 @@
   "name": "react",
   "version": "1.0.0",
   "description": "first app",
-  "main": "fun.js",
   "scripts": {
-    "start":"parcel index.html",
-    "test": "jest"
+    "start": "parcel index.html",
+    "build":"parcel build index.html --dist-dir build"
   },
   "repository": {
     "type": "git",
