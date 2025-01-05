@@ -5,7 +5,6 @@ import resList from "../utils/resList"
 import Body from "./Body"
 
 
-
 const App = () =>
     (
         <div>
@@ -14,6 +13,7 @@ const App = () =>
         </div>
         
     )
+    console.log( App())
 
 const root = ReactDom.createRoot(document.getElementById("root"))
 
