@@ -1,6 +1,5 @@
 import ResCard from "../components/ResCard";
 import { useState, useEffect } from "react";
-import reList from "../utils/resList";
 const Body = () => {
   const [resList, setReslist] = useState([]);
   const [svalue, setValue] = useState("");
@@ -17,9 +16,10 @@ const Body = () => {
 
       const results = await data.json();
       console.log(
-        results.data.cards[4]?.card?.card?.gridElements?.infoWithStyle
+        results?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
           ?.restaurants
       );
+      console.log("  In async  ")
       setReslist(
         results?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
           ?.restaurants

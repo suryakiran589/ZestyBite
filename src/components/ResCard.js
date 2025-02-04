@@ -2,6 +2,7 @@
 const ResCard = ({r})=>{
     // console.log(r)
     const {res} = r
+    
 
     // const {name} = resList.data
 
