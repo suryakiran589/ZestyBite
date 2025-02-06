@@ -4,9 +4,9 @@ import {useParams} from "react-router-dom"
 function ResMenu(){
     const [resInfo,setResInfo]=useState(null)
     const {id}=useParams()
-    console.log(id)
+    // console.log(id)
     useEffect(
-        ()=>{getData()},[]
+        ()=>{getData()},[id]
     )
     async function getData()
     {
@@ -16,15 +16,16 @@ function ResMenu(){
         const {data} =results
         // console.log(data)       
         setResInfo(data) 
-        console.log(resInfo)
-        // const {name,city,avgRating}=data?.cards[2]?.card?.card?.info
+        console.log("menu",data)
+        const {name,city,avgRating}=data?.cards[2]?.card?.card?.info
+
     }
 
     if (resInfo == null){
         return <h1>shimmer</h1>
     }
     return (
-        <h1>{resInfo?.cards[2]?.card?.card?.info.name}</h1>
+        <h1>{name}</h1>
     )
 }
 export default ResMenu
