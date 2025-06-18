@@ -6,7 +6,7 @@ const Body = () => {
   const [resList, setReslist] = useState([]);
   const [svalue, setValue] = useState("");
   const [filteredList, setFilteredList] = useState([]);
-  // const {id}=useParams()
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -33,7 +33,7 @@ const Body = () => {
       console.log(error, "res error");
     }
   }
-  if(resList.length ===0){
+  if( resList == undefined || resList.length==0    ){
     return <Shimmer/>
   }
 
@@ -60,13 +60,11 @@ const Body = () => {
           Search
         </button>
       </div>
-      <div className="flex  justify-center">
-        <div className="flex flex-wrap pl-5 md:pl-10">
+      <div className="flex flex-wrap justify-center">
 
         {filteredList.map((res) => (
           <Link to={"/restaurants/"+res?.info?.id} key={res.info.id}><ResCard key={res.info.id} r={{ res }} /></Link>
         ))}
-        </div>
       </div>
     </div>
   );

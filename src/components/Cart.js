@@ -20,7 +20,7 @@ function Cart() {
     return (<div className="  flex flex-col justify-center items-center ">
         <div className="md:text-3xl font-bold  ">Cart</div>
         <div className="justify-center items-center">
-            {cartItems.length!=0 ? cartItems.map((item) => <div onClick={()=>handleDesc(item?.card?.info?.name)} className="flex justify-between md:w-[900px]  p-[10px] m-[5px] rounded-[10px] border-b-2 cursor-pointer">
+            {cartItems.length!=0 ? cartItems.map((item) => <div key={item?.card?.info?.name} onClick={()=>handleDesc(item?.card?.info?.name)} className="flex justify-between md:w-[900px]  p-[10px] m-[5px] rounded-[10px] border-b-2 cursor-pointer">
             <div className="m-[5px]">
 
               <h1 className="text-[20px] font-bold font-Poppins ">{item?.card?.info?.name}</h1>
