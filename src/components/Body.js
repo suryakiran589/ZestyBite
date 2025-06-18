@@ -33,7 +33,7 @@ const Body = () => {
       console.log(error, "res error");
     }
   }
-  if( resList == undefined || resList.length==0    ){
+  if(  resList.length==0    ){
     return <Shimmer/>
   }
 
