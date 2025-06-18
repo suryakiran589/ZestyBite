@@ -1,18 +1,22 @@
 import React from "react"
 import ReactDom from "react-dom/client"
-import Header from "../components/Header"
+import Header from "./Header"
 import Body from "./Body"
 import About from "./About"
 import {createBrowserRouter, RouterProvider,Outlet,Link} from "react-router-dom"
-
+import ResMenu from "./ResMenu"
+import { Provider } from "react-redux"
+import appStore from "../utils/appStore"
+import Cart from "./Cart"
 
 const App = () =>
     (
-        <div>
+        <Provider store={appStore}>
+        <div className="">
             <Header />
             <Outlet />
         </div>
-        
+        </Provider>
     )
 
 const appRoute = createBrowserRouter([
@@ -26,6 +30,14 @@ const appRoute = createBrowserRouter([
         {
             path:"/about",
             element:<About />
+        },
+        {
+            path:"/restaurants/:id",
+            element:< ResMenu/>
+        },
+        {
+            path:"/cart",
+            element:< Cart/>
         }
     ]
     }

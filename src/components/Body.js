@@ -1,6 +1,7 @@
 import ResCard from "../components/ResCard";
 import { useState, useEffect } from "react";
 import {useParams,Link} from "react-router-dom"
+import Shimmer from "./Shimmer";
 const Body = () => {
   const [resList, setReslist] = useState([]);
   const [svalue, setValue] = useState("");
@@ -32,18 +33,23 @@ const Body = () => {
       console.log(error, "res error");
     }
   }
+  if(resList.length ===0){
+    return <Shimmer/>
+  }
+
   return (
-    <div className="body">
-      <div className="search">
-        <input
+    <div className="">
+      <div className="p-4 ">
+        <input className="focus:bg-amber-200 border-0 md:w-[250px] m-3 bg-amber-100 p-1 rounded-[5px] outline-none"
           type="text"
           value={svalue}
+          placeholder="Search Restaurants"
           onChange={(e) => {
             console.log(e.target);
             setValue(e.target.value);
           }}
         ></input>
-        <button
+        <button className="bg-[#ff7c55] hover:bg-[#df6a47] px-2 py-[3px] m-[5px] md:text-[17px] text-white rounded-[5px]"
           onClick={() => {
             let filter = resList.filter((res) =>
               res.info.name.toLowerCase().includes(svalue.toLowerCase())
@@ -51,13 +57,16 @@ const Body = () => {
             setFilteredList(filter);
           }}
         >
-          search
+          Search
         </button>
       </div>
-      <div className="ResContainer">
+      <div className="flex  justify-center">
+        <div className="flex flex-wrap pl-5 md:pl-10">
+
         {filteredList.map((res) => (
-          <Link to={"/restaurants/"+res?.info?.id}><ResCard key={res.info.id} r={{ res }} /></Link>
+          <Link to={"/restaurants/"+res?.info?.id} key={res.info.id}><ResCard key={res.info.id} r={{ res }} /></Link>
         ))}
+        </div>
       </div>
     </div>
   );
